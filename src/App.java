@@ -1,3 +1,4 @@
+import java.nio.channels.Pipe.SourceChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -77,11 +78,19 @@ public class App {
         System.out.println("\n");
 
         System.out.println("****************** EJERCICIO 18 **********************");
-        Ejercicio18();
+        // Ejercicio18();
         System.out.println("\n");
 
         System.out.println("****************** EJERCICIO 19 **********************");
-        Ejercicio19(scanner);
+        // Ejercicio19(scanner);
+        System.out.println("\n");
+
+        System.out.println("****************** EJERCICIO 20 **********************");
+        // Ejercicio20();
+        System.out.println("\n");
+
+        System.out.println("****************** EJERCICIO 21 **********************");
+        Ejercicio21(scanner, scanner);
         System.out.println("\n");
 
         scanner.close();
@@ -430,6 +439,71 @@ public class App {
 
             num2 = suma;
         }
+
+    }
+
+    public static void Ejercicio20() {
+        int filas;
+        int columnas;
+
+        for (columnas = 1; columnas <= 4; columnas++) {
+
+            for (filas = 1; filas <= 4; filas++) {
+
+                System.out.print("██");
+                System.out.print("  ");
+            }
+
+            System.out.println("");
+            for (filas = 1; filas <= 4; filas++) {
+
+                System.out.print("  ");
+                System.out.print("██");
+            }
+            System.out.println("");
+
+        }
+    }
+
+    public static void Ejercicio21(Scanner menu, Scanner conversion) {
+        System.out.print("Presiona enter para continuar...");
+        menu.nextLine();
+
+        System.out.println("===========================================");
+        System.out.println("CONVERSION DE MAGNITUDES..." + "\n" +
+                "1. CONVERTIR DE MILLAS A KILOMETROS" + "\n" +
+                "2. CONVERTIR DE KILOMETROS A MILLAS");
+
+        System.out.println("===========================================");
+        System.out.print("Selecciona una opcion (1 - 2): ");
+        var opcion = menu.nextInt();
+
+        switch (opcion) {
+            case 1:
+                System.out.print("Ingrese el valor en millas para convertir a KM: ");
+                var mll = conversion.nextFloat();
+                var resultado = mll * 1.60934;
+
+                System.out.println("===========================================");
+                System.out.printf("La conversion de millas a KM es: %.4f kilometros %n", resultado);
+                break;
+            case 2:
+                System.out.print("Ingrese el valor en KM para convertir a Millas: ");
+                var km = conversion.nextFloat();
+                var resultado2 = km / 1.60934;
+
+                System.out.println("===========================================");
+                System.out.printf("La conversion de KM a Millas es: %.4f Millas%n", resultado2);
+                break;
+
+            default:
+                System.err.println("Opcion invalida...");
+                break;
+        }
+
+    }
+
+    public static void Ejercicio22() {
 
     }
 }
