@@ -1,4 +1,3 @@
-import java.nio.channels.Pipe.SourceChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -90,7 +89,11 @@ public class App {
         System.out.println("\n");
 
         System.out.println("****************** EJERCICIO 21 **********************");
-        Ejercicio21(scanner, scanner);
+        // Ejercicio21(scanner, scanner);
+        System.out.println("\n");
+
+        System.out.println("****************** EJERCICIO 22 **********************");
+        Ejercicio22(scanner);
         System.out.println("\n");
 
         scanner.close();
@@ -503,7 +506,62 @@ public class App {
 
     }
 
-    public static void Ejercicio22() {
+    public static void Ejercicio22(Scanner user) {
+        System.out.println("Primero selecciona la coputadora...");
+        System.out.print("Enter para continuar...");
+        user.nextLine();
+
+        int seleccionCompu = (int) (Math.random() * 3) + 1;
+        System.out.println("Ya la computadora hizo su eleccion...");
+        System.out.println("");
+
+        System.out.println("Ahora elige tu: " + "\n" +
+                "1 = Piedra" + "\n" +
+                "2 = Papel" + "\n" +
+                "3 = Tijera");
+        System.out.println("");
+        System.out.print("Escribe tu elección aqui -> ");
+        var eleccionUser = user.nextInt();
+
+        System.out.println("=====================================");
+        System.out.print("La computadora eligió: ");
+        switch (seleccionCompu) {
+            case 1:
+                System.out.println("Piedra");
+                System.out.println("");
+                switch (eleccionUser) {
+                    case 1 -> System.out.println("Empate...");
+                    case 2 -> System.out.println("Usted gana! :)");
+                    case 3 -> System.out.println("Perdio :(");
+                    default -> System.err.println("Eleccion invalida");
+                }
+                break;
+
+            case 2:
+                System.out.println("Papel");
+                System.out.println("");
+                switch (eleccionUser) {
+                    case 1 -> System.out.println("Perdio :(");
+                    case 2 -> System.out.println("Empate...");
+                    case 3 -> System.out.println("Usted gano! :)");
+                    default -> System.err.println("Eleccion invalida...");
+                }
+                break;
+
+            case 3:
+                System.out.println("Tijera");
+                System.out.println("");
+                switch (eleccionUser) {
+                    case 1 -> System.out.println("Usted gana! :)");
+                    case 2 -> System.out.println("Perdio :(");
+                    case 3 -> System.out.println("Empate...");
+                    default -> System.err.println("Eleccion invalida...");
+                }
+                break;
+
+            default:
+                System.err.println("Ocurrio un error... :(");
+        }
 
     }
 }
