@@ -1,3 +1,5 @@
+import java.net.Socket;
+import java.nio.channels.Pipe.SourceChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -93,7 +95,11 @@ public class App {
         System.out.println("\n");
 
         System.out.println("****************** EJERCICIO 22 **********************");
-        Ejercicio22(scanner);
+        // Ejercicio22(scanner);
+        System.out.println("\n");
+
+        System.out.println("****************** EJERCICIO 22 **********************");
+        Ejercicio23(scanner);
         System.out.println("\n");
 
         scanner.close();
@@ -478,7 +484,7 @@ public class App {
                 "2. CONVERTIR DE KILOMETROS A MILLAS");
 
         System.out.println("===========================================");
-        System.out.print("Selecciona una opcion (1 - 2): ");
+        System.out.print("Stamanoa una opcion (1 - 2): ");
         var opcion = menu.nextInt();
 
         switch (opcion) {
@@ -507,12 +513,12 @@ public class App {
     }
 
     public static void Ejercicio22(Scanner user) {
-        System.out.println("Primero selecciona la coputadora...");
+        System.out.println("Primero stamanoa la coputadora...");
         System.out.print("Enter para continuar...");
         user.nextLine();
 
-        int seleccionCompu = (int) (Math.random() * 3) + 1;
-        System.out.println("Ya la computadora hizo su eleccion...");
+        int stamanoCompu = (int) (Math.random() * 3) + 1;
+        System.out.println("Ya la computadora hizo su tamano...");
         System.out.println("");
 
         System.out.println("Ahora elige tu: " + "\n" +
@@ -521,47 +527,97 @@ public class App {
                 "3 = Tijera");
         System.out.println("");
         System.out.print("Escribe tu elección aqui -> ");
-        var eleccionUser = user.nextInt();
+        var tamanoUser = user.nextInt();
 
         System.out.println("=====================================");
         System.out.print("La computadora eligió: ");
-        switch (seleccionCompu) {
+        switch (stamanoCompu) {
             case 1:
                 System.out.println("Piedra");
                 System.out.println("");
-                switch (eleccionUser) {
+                switch (tamanoUser) {
                     case 1 -> System.out.println("Empate...");
                     case 2 -> System.out.println("Usted gana! :)");
                     case 3 -> System.out.println("Perdio :(");
-                    default -> System.err.println("Eleccion invalida");
+                    default -> System.err.println("tamano invalida");
                 }
                 break;
 
             case 2:
                 System.out.println("Papel");
                 System.out.println("");
-                switch (eleccionUser) {
+                switch (tamanoUser) {
                     case 1 -> System.out.println("Perdio :(");
                     case 2 -> System.out.println("Empate...");
                     case 3 -> System.out.println("Usted gano! :)");
-                    default -> System.err.println("Eleccion invalida...");
+                    default -> System.err.println("tamano invalida...");
                 }
                 break;
 
             case 3:
                 System.out.println("Tijera");
                 System.out.println("");
-                switch (eleccionUser) {
+                switch (tamanoUser) {
                     case 1 -> System.out.println("Usted gana! :)");
                     case 2 -> System.out.println("Perdio :(");
                     case 3 -> System.out.println("Empate...");
-                    default -> System.err.println("Eleccion invalida...");
+                    default -> System.err.println("tamano invalida...");
                 }
                 break;
 
             default:
                 System.err.println("Ocurrio un error... :(");
         }
+
+    }
+
+    public static void Ejercicio23(Scanner numero) {
+        System.out.println("SI ES UN NUMERO ENTERO TERMINARA LA APLICACIÓN");
+        System.out.println("");
+        System.out.print("De cuanto es el tamaño maximo que quieres del diamante? -> ");
+        var n = numero.nextInt();
+
+        while (n % 2 != 0) {
+
+            /*
+             * se divide el numero y se le suma 1 para que el maximo sea igual al numero de
+             * entrada
+             */
+            var tamano = n / 2 + 1;
+
+            for (int i = 1; i <= tamano; i++) {
+
+                for (int j = 1; j <= tamano - i; j++) {
+                    System.out.print(" ");
+                }
+
+                // para imprimir los asteriscos
+                for (int j = 1; j <= ((2 * i) - 1); j++) {
+                    System.out.print("*");
+                }
+                System.out.println();
+
+            }
+
+            // decrementar la segunda parte
+            for (int i = tamano - 1; i >= 1; i--) {
+
+                for (int j = 1; j <= tamano - i; j++) {
+                    System.out.print(" ");
+                }
+
+                for (int j = 1; j <= ((2 * i) - 1); j++) {
+                    System.out.print("*");
+                }
+                System.out.println();
+
+            }
+
+            System.out.print("termina con numero entero (numero primo para formar otro rombo) -> ");
+            n = numero.nextInt();
+        }
+
+        System.out.println("============== TERMIMO LA APP ==============");
 
     }
 }
